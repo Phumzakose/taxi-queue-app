@@ -9,7 +9,7 @@ function TaxiQueue(people, taxi) {
   }
 
   function joinQueue() {
-    return people_counter++;
+    people_counter++;
   }
 
   function leaveQueue() {

@@ -7,11 +7,13 @@ var added_people = 0;
 if (localStorage.getItem("people")) {
   added_people = Number(localStorage.getItem("people"));
 }
-
+if (localStorage.getItem("taxi")) {
+  added_Taxi = Number(localStorage.getItem("taxi"));
+}
 counter.innerHTML = added_people;
 
 // create Factory Function instance
-const peopleQueueInstance = TaxiQueue(added_people);
+const peopleQueueInstance = TaxiQueue(added_people, added_Taxi);
 
 joinButton.addEventListener("click", function () {
   peopleQueueInstance.joinQueue();
@@ -38,15 +40,14 @@ if (localStorage.getItem("taxi")) {
 
 taxiCounter.innerHTML = added_Taxi;
 
-const taxiQueueInstance = TaxiQueue(added_Taxi);
 joinTaxi.addEventListener("click", function () {
-  taxiQueueInstance.joinTaxiQueue();
-  taxiCounter.innerHTML = taxiQueueInstance.taxiQueueLength();
-  localStorage.setItem("taxi", taxiQueueInstance.taxiQueueLength());
+  peopleQueueInstance.joinTaxiQueue();
+  taxiCounter.innerHTML = peopleQueueInstance.taxiQueueLength();
+  localStorage.setItem("taxi", peopleQueueInstance.taxiQueueLength());
 });
 
 taxiDepart.addEventListener("click", function () {
-  taxiQueueInstance.taxiDepart();
-  taxiCounter.innerHTML = taxiQueueInstance.taxiQueueLength();
-  localStorage.setItem("taxi", taxiQueueInstance.taxiQueueLength());
+  peopleQueueInstance.taxiDepart();
+  taxiCounter.innerHTML = peopleQueueInstance.taxiQueueLength();
+  localStorage.setItem("taxi", peopleQueueInstance.taxiQueueLength());
 });
