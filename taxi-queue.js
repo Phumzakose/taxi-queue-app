@@ -1,12 +1,12 @@
-function TaxiQueue() {
+function TaxiQueue(people, taxi) {
   var people_counter = 0;
-  // if (people) {
-  //   people_counter = people;
-  // }
+  if (people) {
+    people_counter = people;
+  }
   var taxi_counter = 0;
-  // if (taxi) {
-  //   taxi_counter = taxi;
-  // }
+  if (taxi) {
+    taxi_counter = taxi;
+  }
 
   function joinQueue() {
     return people_counter++;

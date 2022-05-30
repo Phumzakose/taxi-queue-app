@@ -1,4 +1,35 @@
 describe("The taxi queue app", function () {
+  it("should be able to initialise the queueLength for people", function () {
+    const taxiQueue = TaxiQueue(3, 0);
+
+    assert.equal(3, taxiQueue.queueLength());
+    assert.equal(0, taxiQueue.taxiQueueLength());
+  });
+  it("should be able to initialise the taxiQueueLeng of the taxis", function () {
+    const taxiQueue = TaxiQueue(3, 4);
+
+    assert.equal(3, taxiQueue.queueLength());
+    assert.equal(4, taxiQueue.taxiQueueLength());
+  });
+  it("should be able to initialise the queueLength for people and increase when a person joins", function () {
+    const taxiQueue = TaxiQueue(3, 0);
+
+    taxiQueue.joinQueue();
+    taxiQueue.joinQueue();
+
+    assert.equal(5, taxiQueue.queueLength());
+    assert.equal(0, taxiQueue.taxiQueueLength());
+  });
+  it("should be able to initialize the taxi queue length and increase when a taxi joins", function () {
+    const taxiQueue = TaxiQueue(0, 4);
+
+    taxiQueue.joinTaxiQueue();
+    taxiQueue.joinTaxiQueue();
+    taxiQueue.joinTaxiQueue();
+
+    assert.equal(7, taxiQueue.taxiQueueLength());
+    assert.equal(0, taxiQueue.queueLength());
+  });
   it("should allow people to join the queue", function () {
     const taxiQueue = TaxiQueue();
 
@@ -98,7 +129,7 @@ describe("The taxi queue app", function () {
 
     // data after a taxi departed
     assert.equal(2, taxiQueue.taxiQueueLength());
-    assert.equal(3, taxiQueue.queueLength());
+    assert.equal(15, taxiQueue.queueLength());
     // assert.equal(2, taxiQueue.queueLength());
   });
 
@@ -129,7 +160,7 @@ describe("The taxi queue app", function () {
     taxiQueue.taxiDepart();
 
     // data after a taxi departed
-    assert.equal(3, taxiQueue.taxiQueueLength());
+    assert.equal(2, taxiQueue.taxiQueueLength());
     assert.equal(11, taxiQueue.queueLength());
   });
 
