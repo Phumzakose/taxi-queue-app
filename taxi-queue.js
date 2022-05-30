@@ -1,36 +1,47 @@
 function TaxiQueue() {
+  var people_counter = 0;
+  // if (people) {
+  //   people_counter = people;
+  // }
+  var taxi_counter = 0;
+  // if (taxi) {
+  //   taxi_counter = taxi;
+  // }
 
+  function joinQueue() {
+    return people_counter++;
+  }
 
-	function joinQueue() {
+  function leaveQueue() {
+    if (people_counter > 0) {
+      return people_counter--;
+    }
+  }
 
-	}
+  function joinTaxiQueue() {
+    taxi_counter++;
+  }
 
-	function leaveQueue() {
+  function queueLength() {
+    return people_counter;
+  }
 
-	}
+  function taxiQueueLength() {
+    return taxi_counter;
+  }
 
-	function joinTaxiQueue() {
+  function taxiDepart() {
+    if (taxi_counter > 0) {
+      return taxi_counter--;
+    }
+  }
 
-	}
-
-	function queueLength() {
-
-	}
-
-	function taxiQueueLength() {
-
-	}
-
-	function taxiDepart(){
-
-	}
-
-	return {
-		joinQueue,
-		leaveQueue,
-		joinTaxiQueue,
-		queueLength,
-		taxiQueueLength,
-		taxiDepart
-	}
+  return {
+    joinQueue,
+    leaveQueue,
+    joinTaxiQueue,
+    queueLength,
+    taxiQueueLength,
+    taxiDepart,
+  };
 }
